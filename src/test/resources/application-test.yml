@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;NON_KEYWORDS=VALUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: false
+  flyway:
+    enabled: true
+    clean-on-validation-error: true
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.data.redis.autoconfigure.DataRedisAutoConfiguration
+      - org.springframework.boot.data.redis.autoconfigure.DataRedisReactiveAutoConfiguration
+      - org.springframework.boot.data.redis.autoconfigure.DataRedisRepositoriesAutoConfiguration
+      - org.springdoc.core.configuration.SpringDocConfiguration
+      - org.springdoc.webmvc.ui.SwaggerConfig
+      - org.springdoc.core.configuration.SpringDocUIConfiguration
+      - org.springdoc.core.properties.SwaggerUiConfigProperties
+      - org.springdoc.core.properties.SwaggerUiOAuthProperties
+
+jwt:
+  secret: test-secret-key-for-integration-testing-must-be-at-least-256-bits-long!!
+  access-expiration: 1800000
+  refresh-expiration: 604800000
+
+toss:
+  payments:
+    secret-key: test_sk_placeholder

@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: shop-easy
+  profiles:
+    active: dev
+  threads:
+    virtual:
+      enabled: true
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  secret: ${JWT_SECRET:c2hvcC1lYXN5LXNlY3JldC1rZXktZm9yLWRldmVsb3BtZW50LW9ubHktbXVzdC1iZS0yNTYtYml0cw==}
+  access-expiration: 1800000
+  refresh-expiration: 604800000
+
+toss:
+  payments:
+    secret-key: ${TOSS_SECRET_KEY:test_sk_placeholder}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
