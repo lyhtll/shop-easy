@@ -1,0 +1,10 @@
+package com.yunha.shopeasy.domain.order.repository;
+
+import com.yunha.shopeasy.domain.order.domain.Order;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface OrderRepository extends JpaRepository<Order, Long> {
+    List<Order> findAllByUserId(Long userId);
+}
