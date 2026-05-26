@@ -43,8 +43,11 @@ public class ConfirmPaymentUseCase {
                     .orElseThrow(() -> new CustomException(PaymentError.PAYMENT_NOT_FOUND));
         }
 
-        // ② 주문 조회 및 소유자 검증
-        Order order = orderService.findById(Long.parseLong(request.orderId()));
+        // ② 주문 조회 및 소유자 검증 (orderId 형식: "order-000001" 또는 숫자 문자열)
+        String rawId = request.orderId().startsWith("order-")
+                ? request.orderId().substring(6)
+                : request.orderId();
+        Order order = orderService.findById(Long.parseLong(rawId));
         if (!order.getUserId().equals(userId)) {
             throw new CustomException(OrderError.ORDER_ACCESS_DENIED);
         }

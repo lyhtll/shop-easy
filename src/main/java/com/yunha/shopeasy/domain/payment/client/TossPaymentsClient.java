@@ -5,12 +5,14 @@ import com.yunha.shopeasy.domain.payment.dto.response.TossPaymentResponse;
 import com.yunha.shopeasy.domain.payment.error.PaymentError;
 import com.yunha.shopeasy.global.error.CustomException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 import java.math.BigDecimal;
 import java.util.Map;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class TossPaymentsClient {
@@ -25,6 +27,7 @@ public class TossPaymentsClient {
                     .retrieve()
                     .body(TossPaymentResponse.class);
         } catch (Exception e) {
+            log.error("Toss API error", e);
             throw new CustomException(PaymentError.TOSS_API_CALL_FAILED);
         }
     }
@@ -37,6 +40,7 @@ public class TossPaymentsClient {
                     .retrieve()
                     .toBodilessEntity();
         } catch (Exception e) {
+            log.error("Toss API error", e);
             throw new CustomException(PaymentError.TOSS_API_CALL_FAILED);
         }
     }
