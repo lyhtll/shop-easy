@@ -42,7 +42,7 @@ public class ReissueUseCase {
         refreshTokenRepository.deleteById(userId.toString());
         String newAccess = jwtProvider.generateAccessToken(user.getId(), user.getRole());
         String newRefresh = jwtProvider.generateRefreshToken(user.getId());
-        refreshTokenRepository.save(new RefreshToken(user.getId(), newRefresh));
+        refreshTokenRepository.save(new RefreshToken(user.getId().toString(), newRefresh));
         return new LoginResponse(newAccess, newRefresh);
     }
 }

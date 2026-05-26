@@ -13,8 +13,8 @@ public class RefreshToken {
 
     private String token;
 
-    public RefreshToken(Long userId, String token) {
-        this.userId = userId.toString();
+    public RefreshToken(String userId, String token) {
+        this.userId = userId;
         this.token = token;
     }
 }

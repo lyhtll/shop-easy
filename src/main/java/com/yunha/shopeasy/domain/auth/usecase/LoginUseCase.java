@@ -32,7 +32,7 @@ public class LoginUseCase {
         }
         String accessToken = jwtProvider.generateAccessToken(user.getId(), user.getRole());
         String refreshToken = jwtProvider.generateRefreshToken(user.getId());
-        refreshTokenRepository.save(new RefreshToken(user.getId(), refreshToken));
+        refreshTokenRepository.save(new RefreshToken(user.getId().toString(), refreshToken));
         return new LoginResponse(accessToken, refreshToken);
     }
 }
