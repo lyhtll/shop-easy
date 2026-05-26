@@ -6,6 +6,7 @@ import com.yunha.shopeasy.domain.product.dto.request.ProductSearchCondition;
 import com.yunha.shopeasy.domain.product.dto.request.UpdateProductRequest;
 import com.yunha.shopeasy.domain.product.dto.response.ProductDetailResponse;
 import com.yunha.shopeasy.domain.product.dto.response.ProductResponse;
+
 import com.yunha.shopeasy.domain.product.usecase.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +31,7 @@ public class ProductController {
     private final DeleteProductUseCase deleteProductUseCase;
 
     @PostMapping
-    public ResponseEntity<Long> create(@Valid @RequestBody CreateProductRequest request) {
+    public ResponseEntity<ProductDetailResponse> create(@Valid @RequestBody CreateProductRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(createProductUseCase.execute(request));
     }
 
@@ -50,7 +51,7 @@ public class ProductController {
         return ResponseEntity.ok(getProductUseCase.execute(id));
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<Void> update(@PathVariable Long id, @Valid @RequestBody UpdateProductRequest request) {
         updateProductUseCase.execute(id, request);
         return ResponseEntity.noContent().build();

@@ -55,11 +55,11 @@ public class Product extends BaseEntity {
         this.stock -= quantity;
     }
 
-    public void update(String name, BigDecimal price, int stock, ProductCategory category, String description) {
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
-        this.category = category;
-        this.description = description;
+    public void update(String name, BigDecimal price, Integer stock, ProductCategory category, String description) {
+        if (name != null) this.name = name;
+        if (price != null) this.price = price;
+        if (stock != null) this.stock = stock;
+        if (category != null) this.category = category;
+        if (description != null) this.description = description;
     }
 }
