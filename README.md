@@ -19,6 +19,34 @@ Spring Boot 기반의 RESTful API 서버입니다. 회원 관리, 상품 관리,
 
 ---
 
+## 테스트 웹 UI
+
+앱 실행 후 **http://localhost:8080** 에 접속하면 쇼핑몰 웹 화면을 바로 사용할 수 있습니다.
+
+| 기능 | 설명 |
+|------|------|
+| 상품 목록 | 카테고리·키워드·가격 범위 필터 + 페이지네이션 |
+| 회원가입 / 로그인 | JWT 발급 및 자동 저장 (AccessToken 만료 시 자동 재발급) |
+| 장바구니 | 수량 조절, 담기·삭제 |
+| 주문 | 장바구니 → 주문 생성 |
+| 결제 | Toss Payments 실결제 연동 (카드 결제 가능) |
+| 주문 내역 | 상태 확인 (PENDING / PAID / REFUNDED / CANCELLED), 주문 취소 |
+
+> Swagger보다 전체 흐름(상품 조회 → 주문 → 결제)을 한 번에 확인하기 용이합니다.
+
+### Toss Payments 테스트 키
+
+결제 기능은 Toss Payments **테스트 키**가 `application.yml`에 기본값으로 설정되어 있어 별도 환경변수 없이 바로 사용 가능합니다.
+
+| 구분 | 키 |
+|------|----|
+| Secret Key (서버) | `test_sk_XLkKEypNArW4l5beDdj8lmeaxYG5` |
+| Client Key (웹 UI) | `test_ck_Lex6BJGQOVDBb1pd6ma8W4w2zNbg` |
+
+> 테스트 결제 시 카드번호(mastercard) `5555 5555 5555 4444`, 유효기간 `02/31` (Toss 테스트 환경 전용 카드번호)
+
+---
+
 ## 실행 방법
 
 ### 방법 1 — Docker Compose (권장)
