@@ -111,7 +111,7 @@ docker run -d -p 6379:6379 redis:7-alpine
 | GET | `/api/products` | 상품 목록 조회 (동적 검색 + 페이징) | 불필요 |
 | GET | `/api/products/{id}` | 상품 상세 조회 | 불필요 |
 | POST | `/api/products` | 상품 등록 | ADMIN |
-| PUT | `/api/products/{id}` | 상품 수정 | ADMIN |
+| PATCH | `/api/products/{id}` | 상품 수정 | ADMIN |
 | DELETE | `/api/products/{id}` | 상품 삭제 | ADMIN |
 
 #### 주문 (`/api/orders`)
